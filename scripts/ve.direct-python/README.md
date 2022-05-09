@@ -34,7 +34,7 @@ sudo reboot
 # Running the parser directly
 
 ```bash
-/usr/bin/python3 -u -m vedirect --influx=pi.hole --database=solar --port=/dev/ttyAMA0
+/usr/bin/python3 -u -m vedirect --influx=localhost --database=solar --port=/dev/mppt
 ```
 
 # Example InfluxDB Measurement
