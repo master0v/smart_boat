@@ -1,6 +1,6 @@
 [Unit]
 Description=@eXpeditious Sensors service
-After=network.target
+After=influxd.service
 
 [Service]
 Type=simple
@@ -8,6 +8,7 @@ Restart=always
 User=captain
 WorkingDirectory=/home/captain/smart_boat/scripts
 ExecStart=/home/captain/smart_boat/scripts/sensors-influxdb.py
+Nice=-15
 # KillSignal=SIGINT
 
 [Install]

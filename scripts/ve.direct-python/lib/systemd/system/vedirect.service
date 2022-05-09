@@ -1,6 +1,6 @@
 [Unit]
 Description=VE.Direct serial monitor
-After=multi-user.target
+After=influxd.service
 
 [Service]
 Type=simple
@@ -11,7 +11,8 @@ EnvironmentFile=/home/captain/smart_boat/scripts/ve.direct-python/.env.installed
 ExecStart=/usr/bin/python3 -u -m vedirect --influx=${INFLUX_HOST} --database=${INFLUX_DB} --port=${SERIAL_PORT}
 StandardOutput=syslog
 StandardError=syslog
-RestartSec=5s
+Nice=-20
+RestartSec=60s
 Restart=always
 
 [Install]
