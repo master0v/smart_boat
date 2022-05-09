@@ -150,7 +150,7 @@ map.addOverlay(popup);
 
 // display popup on click
 map.on('click', function(evt) {
-  feature = map.forEachFeatureAtPixel(evt.pixel,
+  var feature = map.forEachFeatureAtPixel(evt.pixel,
     function(feature) {
       return feature;
     });

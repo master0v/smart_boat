@@ -21,6 +21,7 @@ if ($alerts) {
   <script>
     function setHref() {
       document.getElementById('modify-me1').href = "http://" + window.location.hostname + ":3001/";
+      document.getElementById('modify-me2').href = "http://" + window.location.hostname + ":8002/";
     };
   </script>
   <script type="text/javascript" charset="utf-8">
@@ -92,6 +93,12 @@ if ($alerts) {
                 <p>
                     <a class="uk-link-text" href="map/" target="_blank">
                         <button class="uk-button uk-button-primary uk-width-1-1 uk-align-center">Chart</button>
+                    </a>
+                </p>
+                <!-- grafana dashboard -->
+                <p>
+                    <a class="uk-link-text" href="#" id="modify-me2" target="_blank">
+                        <button class="uk-button uk-button-primary uk-width-1-1 uk-align-center">WebIOPi</button>
                     </a>
                 </p>
         <!--  https://www.boat-specs.com/sailing/sailboats/x-yachts/x-412 -->
