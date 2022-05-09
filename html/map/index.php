@@ -3,8 +3,9 @@
   <head>
     <title>eXpeditious — Last ~4 days</title>
     <link rel="stylesheet" href="/css/ol.css" type="text/css">
-    <script src="/js/jquery-2.2.3.min.js"></script>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/jquery-2.2.3.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <style>
       .map {
