@@ -17,7 +17,7 @@ import cpu_temp
 import logging
 logging.basicConfig(format='%(name)-8s: %(levelname)-6s %(message)s') # %(asctime)-10s 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+#logger.setLevel(logging.DEBUG)
 
 #SET CONNECTION INFO
 host = "localhost"
