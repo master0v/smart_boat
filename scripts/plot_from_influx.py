@@ -3,7 +3,6 @@
 from influxdb import InfluxDBClient
 import matplotlib
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 import matplotlib.dates
 from dateutil import tz
 
@@ -36,18 +35,19 @@ def getData(measurement, series, go_back, divisor=1):
 
 
 if __name__ == '__main__':
+
+  period = "24h" # 15m
   
-  
-  period = "24h" # 15 min
   series = [
-    ["power", "V", 1, "volts"],
-    ["power", "I", 1000, "amps"],
-    ["sensors", "cpuTemp", 1, "C"]
+    ["power", "I", 1000, "solar amps"],
+    ["status", "CS", 1, "3=bulk, 4=abs, 5=float"],
+    ["power", "V", 1, "battery volts"],
+    ["sensors", "cpuTemp", 1, "cpu temp (C)"],
   ]
   
   plt.style.use("grayscale")
   
-  fig, axs = plt.subplots(len(series), figsize=(9.4, 10))
+  fig, axs = plt.subplots(len(series), figsize=(9.4, 10)) # , sharex=True
   count = 0
   
   for pair in series:
@@ -66,5 +66,5 @@ if __name__ == '__main__':
   plt.savefig("solar.png", bbox_inches='tight') # , , , dpi=myDpi
   
   # for debug on a Mac
-  import os
-  os.system(f"open \"solar.png\"")
+  # import os
+  # os.system(f"open \"solar.png\"")
