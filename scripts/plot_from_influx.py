@@ -6,19 +6,16 @@ import matplotlib.pyplot as plt
 import matplotlib.dates
 from dateutil import tz
 
+host = "expeditious"
+port = 8086
+user = "user"
+password = "password"
+dbname = "solar"
+
+client = InfluxDBClient(host, port, user, password, dbname)
 
 def getData(measurement, series, go_back, divisor=1):
-  
-  host = "expeditious"
-  port = 8086
-  user = "user"
-  password = "password"
-  dbname = "solar"
-  
-  client = InfluxDBClient(host, port, user, password, dbname)
-  
   # SELECT mean("V") FROM "power" WHERE time >= now() - 12h and time <= now() GROUP BY time(30s) fill(null);
-  
   query = f"SELECT mean(\"{series}\") FROM \"{measurement}\" WHERE time >= now() - {go_back} AND time <= now() GROUP BY time(1m);"
   print(query)
   results = client.query(query)
