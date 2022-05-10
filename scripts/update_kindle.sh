@@ -3,13 +3,16 @@
 cd /home/captain/smart_boat/scripts
 filename=mppt
 
+echo "Making the plots from InfluxDB"
+./plot_from_influx.py
+
 # === TOP HALF ==
 #
 # convert grafana dashboard to a png
 #./webpage_to_image.py
 
 # make it monochrome and the right size
-convert solar.png -resize 1135x877 -monochrome solar_m.png
+# convert solar.png -resize 1135x877 -monochrome solar_m.png
 
 # === BOTTOM HALF ===
 #
@@ -43,11 +46,13 @@ convert solar.png -resize 1135x877 -monochrome solar_m.png
 # -monochrome -resize 824x877
 #convert PYEK10.gif -rotate -90 weather_m.png
 
+echo "Composing everything on the template"
+
 # put both halfs on a template
 # -crop WIDTH x HEIGHT + HORIZONTAL CUT LEFT + VERTICAL CUT TOP
 # -repage +FROM THE LEFT+FROM THE TOP 
 # 745 
-convert template.png \( solar_m.png -crop 824x1135+0+18 -repage +0+190 \) \
+convert template.png \( solar.png -crop 824x1135+0+0 -repage +5+195 \) \
   \( -font DejaVu-Sans -pointsize 22 -fill black -gravity NorthEast -annotate +15+15 "$(date)" \) \
   \( -font DejaVu-Sans -pointsize 22 -fill black -gravity SouthWest -annotate +15+15 "$(/home/captain/smart_boat/scripts/alerts.py)" \) \
   -mosaic $filename.png
@@ -58,6 +63,8 @@ convert template.png \( solar_m.png -crop 824x1135+0+18 -repage +0+190 \) \
 # display $filename.png
 # exit
 
+echo "Cleaning eInk"
+
 # upload an image
 scp $filename.png root@192.168.2.2:/tmp/img/
 
@@ -65,5 +72,9 @@ scp $filename.png root@192.168.2.2:/tmp/img/
 ssh root@192.168.2.2 /usr/sbin/eips -g /tmp/img/black.png
 ssh root@192.168.2.2 /usr/sbin/eips -g /tmp/img/white.png
 
+echo "Updating kindle"
+
 # display the file we just uploaded
 ssh root@192.168.2.2 /usr/sbin/eips -g /tmp/img/$filename.png
+
+echo "Done!"
