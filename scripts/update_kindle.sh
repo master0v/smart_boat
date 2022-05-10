@@ -6,7 +6,7 @@ filename=mppt
 # === TOP HALF ==
 #
 # convert grafana dashboard to a png
-./webpage_to_image.py
+#./webpage_to_image.py
 
 # make it monochrome and the right size
 convert solar.png -resize 1135x877 -monochrome solar_m.png
