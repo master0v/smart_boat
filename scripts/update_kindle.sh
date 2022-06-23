@@ -54,7 +54,7 @@ echo "Composing everything on the template"
 # 745 
 convert template.png \( solar.png -crop 824x1135+0+0 -repage +5+195 \) \
   \( -font DejaVu-Sans -pointsize 22 -fill black -gravity NorthEast -annotate +15+15 "$(date)" \) \
-  \( -font DejaVu-Sans -pointsize 32 -fill black -gravity SouthWest -annotate +15+15 "$(/home/captain/smart_boat/scripts/solar_totals.py)" \) \
+  \( -font DejaVu-Sans -pointsize 30 -fill black -gravity SouthWest -annotate +15+15 "$(/home/captain/smart_boat/scripts/solar_totals.py)" \) \
   -mosaic $filename.png
 
 #     \( weather_m.png -crop 824x800+0+40 -repage +10+900 \) \
