@@ -83,9 +83,4 @@ def getDataAndWriteToInfluxDB():
   
 
 if __name__ == '__main__':
-  while(True):
-    try:
-      getDataAndWriteToInfluxDB()
-    except e:
-      print(f"ERROR: {e}. Sleeping 1 min before retrying")
-    sleep(60) # 1 minute
+  getDataAndWriteToInfluxDB()

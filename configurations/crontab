@@ -1,2 +1,3 @@
 # crontab -e
 */30 * * * * /home/captain/smart_boat/scripts/update_kindle.sh
+* * * * * /home/captain/smart_boat/scripts/sensors-influxdb.py
