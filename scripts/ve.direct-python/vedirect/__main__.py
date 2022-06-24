@@ -10,6 +10,7 @@ from influxdb import InfluxDBClient
 influx_client = None
 influx_db = None
 
+
 def main():
     """
     Invoke the parser
@@ -28,11 +29,12 @@ def main():
     ve = Vedirect(args.port)
     ve.read_data_callback(on_victron_data_callback)
 
-def on_victron_data_callback(data):
-    measurements = influx.measurements_for_packet(data)
-    influx_client.write_points(measurements, database=influx_db)
 
-    print(measurements)
+def on_victron_data_callback(data):
+  measurements = influx.measurements_for_packet(data)
+  influx_client.write_points(measurements, database=influx_db)
+
+  #print(measurements)
 
 
 if __name__ == "__main__":
